@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  db:
+    image: scarfacedeb/postgres-pg-partman:latest
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=assessment
+      - POSTGRES_PASSWORD=P@ssw0rd
+      - POSTGRES_DB=assessment
+    ports:
+      - '5433:5432'
+    expose:
+      - '5433'
+    volumes:
+      - './.psql-data/db:/var/lib/postgresql/data'
