@@ -31,6 +31,10 @@ func SetupContactHandler(router gin.IRouter, s contacts.Service, repo contacts.R
 	router.GET("/health/readiness", hh.ReadinessProbe)
 	router.GET("/health/liveness", hh.ReadinessProbe)
 
+	router.GET("/home", func(c *gin.Context) {
+		c.File("./templates/index.html")
+	})
+
 	endpoints := router.Group("/api/v1")
 	endpoints.GET("/contacts", hh.getContacts)
 	endpoints.POST("/contacts", hh.addContact)

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management UI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Contact Management</h1>
+<button id="getContactsBtn">Get Contacts</button>
+<button id="addContactBtn" data-toggle="modal" data-target="#addContactModal">Add Contact</button>
+<button id="updateContactBtn" disabled>Update Contact</button>
+<button id="deleteContactBtn" disabled>Delete Contact</button>
+
+<table id="contactsTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Timestamp</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>External ID</th>
+    </tr>
+    </thead>
+    <tbody id="contactsTableBody">
+    </tbody>
+</table>
+
+<!-- Add Contact Modal -->
+<div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addContactModalLabel">Add Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="externalIdInput">External ID:</label>
+                    <input type="number" class="form-control" id="externalIdInput" placeholder="Enter External ID" min="0" step="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveContactBtn">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Contact Modal -->
+<div class="modal fade" id="updateContactModal" tabindex="-1" role="dialog" aria-labelledby="updateContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateContactModalLabel">Update Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="updateIdInput">ID:</label>
+                    <input type="text" class="form-control" id="updateIdInput" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="updateTimestampInput">Timestamp:</label>
+                    <input type="text" class="form-control" id="updateTimestampInput" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="updateNameInput">Name:</label>
+                    <input type="text" class="form-control" id="updateNameInput">
+                </div>
+                <div class="form-group">
+                    <label for="updateEmailInput">Email:</label>
+                    <input type="email" class="form-control" id="updateEmailInput">
+                </div>
+                <div class="form-group">
+                    <label for="updatePhoneInput">Phone:</label>
+                    <input type="text" class="form-control" id="updatePhoneInput">
+                </div>
+                <div class="form-group">
+                    <label for="updateExternalIdInput">External ID:</label>
+                    <input type="number" class="form-control" id="updateExternalIdInput" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveUpdatedContactBtn">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this contact?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteBtn">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

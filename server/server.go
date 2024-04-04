@@ -47,6 +47,9 @@ func New(
 ) *Server {
 	s := &Server{}
 	r := gin.New()
+	r.StaticFile("/style.css", "./templates/style.css")
+	r.StaticFile("/script.js", "./templates/script.js")
+	r.LoadHTMLGlob("templates/*")
 	r.Use(RequestLogger())
 	router.Route(r, svc, repo, conf)
 	if conf.AppConfig.Addr == "" {
